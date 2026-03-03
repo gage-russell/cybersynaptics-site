@@ -13,8 +13,9 @@ const {
   class: className = '',
 } = Astro.props;
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const resolvedHref = href && href.startsWith('/')
-  ? `${import.meta.env.BASE_URL}${href.replace(/^\//, '')}`
+  ? `${base}${href}`
   : href;
 
 const Tag = href ? 'a' : 'button';
