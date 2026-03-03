@@ -15,7 +15,7 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
 });
 ---
 
-<a href={`/blog/${slug}`} class="blog-card">
+<a href={`${import.meta.env.BASE_URL}blog/${slug}`} class="blog-card">
   <time class="blog-card__date" datetime={pubDate.toISOString()}>{formattedDate}</time>
   <h3 class="blog-card__title">{title}</h3>
   <p class="blog-card__desc">{description}</p>

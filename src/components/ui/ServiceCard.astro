@@ -7,9 +7,10 @@ interface Props {
 }
 
 const { title, description, href, icon } = Astro.props;
+const resolvedHref = `${import.meta.env.BASE_URL}${href.replace(/^\//, '')}`;
 ---
 
-<a href={href} class="service-card">
+<a href={resolvedHref} class="service-card">
   {icon && <span class="service-card__icon" aria-hidden="true">{icon}</span>}
   <h3 class="service-card__title">{title}</h3>
   <p class="service-card__desc">{description}</p>

@@ -1,10 +1,11 @@
 ---
 const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const footerLinks = [
-  { href: '/services', label: 'Services' },
-  { href: '/about', label: 'About' },
-  { href: '/blog', label: 'Blog' },
+  { href: `${base}/services`, label: 'Services' },
+  { href: `${base}/about`, label: 'About' },
+  { href: `${base}/blog`, label: 'Blog' },
 ];
 ---
 

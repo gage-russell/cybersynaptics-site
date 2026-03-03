@@ -13,12 +13,16 @@ const {
   class: className = '',
 } = Astro.props;
 
+const resolvedHref = href && href.startsWith('/')
+  ? `${import.meta.env.BASE_URL}${href.replace(/^\//, '')}`
+  : href;
+
 const Tag = href ? 'a' : 'button';
 ---
 
 {
   href ? (
-    <a href={href} class={`btn btn--${variant} ${className}`}>
+    <a href={resolvedHref} class={`btn btn--${variant} ${className}`}>
       <slot />
     </a>
   ) : (
