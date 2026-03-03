@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/ui/Button.astro';
+---
+
+<BaseLayout
+  title="Software Development | Cybersynaptics.ai"
+  description="Senior software engineers for contract engagements. From project rescue to full product builds — Cybersynaptics integrates with your team and ships."
+>
+  <!-- Hero -->
+  <section class="service-hero section">
+    <div class="container">
+      <p class="eyebrow">🚀 Software Development</p>
+      <h1>Senior engineers who<br /><span class="gradient-text">integrate and ship.</span></h1>
+      <p class="intro">
+        AI is changing how software gets built — but it hasn't replaced the
+        judgment that decides what to build, how to architect it, or when a
+        shortcut becomes a trap. Hiring takes months. Agencies ship juniors in
+        senior packaging. Cybersynaptics provides senior engineers who embed
+        with your team, understand your context, and deliver work you're proud
+        of.
+      </p>
+      <!-- TODO: update CTA to link to /contact once the contact page is built -->
+      <Button href="https://www.linkedin.com/company/cybersynaptics-ai" variant="primary">
+        Let's Talk →
+      </Button>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section class="section--sm">
+    <div class="container content-grid">
+      <div>
+        <h2>What we build</h2>
+        <ul class="feature-list">
+          <li>Web applications and APIs (full-stack, backend, frontend)</li>
+          <li>AI/ML feature development and LLM integrations</li>
+          <li>Cloud infrastructure and platform engineering</li>
+          <li>Data pipelines and integrations</li>
+          <li>Mobile applications (iOS, Android, React Native)</li>
+          <li>Developer tooling and internal platforms</li>
+          <li>Legacy system modernization and migrations</li>
+          <li>Performance optimization and technical debt reduction</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Who it's for</h2>
+        <ul class="feature-list">
+          <li>Engineering teams with a capability or bandwidth gap</li>
+          <li>Product orgs that can't wait 6 months to hire</li>
+          <li>Startups needing to ship v1 without building a full team</li>
+          <li>Companies with a specific project that needs senior ownership</li>
+        </ul>
+
+        <h2 style="margin-top: var(--space-8)">How it works</h2>
+        <p>
+          Every engagement starts with a scoping call to understand your stack,
+          team, timeline, and goals. We agree on a clear scope and communication
+          cadence, then get to work. No agency overhead, no surprises.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-block">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Ready to talk?</h2>
+        <p>Tell us what you're building and where you're stuck.</p>
+        <!-- TODO: update CTA to link to /contact once the contact page is built -->
+        <Button href="https://www.linkedin.com/company/cybersynaptics-ai" variant="primary">
+          Get in Touch →
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .service-hero { padding-bottom: var(--space-16); }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-accent-alt);
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-4);
+    max-width: none;
+  }
+
+  h1 { margin-bottom: var(--space-6); }
+
+  .intro {
+    font-size: 1.0625rem;
+    max-width: 55ch;
+    margin-bottom: var(--space-8);
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  .feature-list {
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    color: var(--color-text-muted);
+  }
+
+  .feature-list li::marker {
+    color: var(--color-accent-alt);
+  }
+
+  .cta-block {
+    background: linear-gradient(135deg, rgba(110, 64, 201, 0.08), rgba(0, 212, 255, 0.04));
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cta-card {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 767px) {
+    .content-grid { grid-template-columns: 1fr; }
+  }
+</style>

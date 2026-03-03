@@ -1,0 +1,27 @@
+---
+/**
+ * Inlines public/favicon.svg at the requested size.
+ * Single source of truth: edit public/favicon.svg to update
+ * both the browser favicon and the logo mark everywhere on the site.
+ */
+import rawSVG from '../../public/favicon.svg?raw';
+
+interface Props {
+  size?: number;
+  class?: string;
+}
+
+const { size = 36, class: className } = Astro.props;
+
+const svg = rawSVG
+  .replace(/width="\d+"/, `width="${size}"`)
+  .replace(/height="\d+"/, `height="${size}"`)
+  .replace(
+    '<svg',
+    ['<svg', 'aria-hidden="true"', className ? `class="${className}"` : '']
+      .filter(Boolean)
+      .join(' ')
+  );
+---
+
+<Fragment set:html={svg} />

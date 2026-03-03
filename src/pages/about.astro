@@ -1,0 +1,241 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+
+const team = [
+  {
+    name: 'Gage Russell',
+    title: 'Co-Founder & CTO',
+    bio: 'Technical leader with 10+ years building and scaling cloud-native systems, data platforms, and AI-integrated products across early-stage startups and growth-stage SaaS companies. Gage has led cloud migrations, engineering organizations, and end-to-end ML systems — from petabyte-scale data platforms on Kubernetes, Airflow, and Snowflake to production RAG and LLM-powered applications. He brings the architectural depth to design it and the leadership experience to own it from roadmap to delivery.',
+
+  },
+  {
+    name: 'Mike Russell',
+    title: 'Co-Founder & CISO',
+    bio: 'Transformational cybersecurity executive with 20+ years leading enterprise security programs for Fortune 500 and high-growth organizations across healthcare, logistics, and SaaS. Mike has served as Head of Security and acting CISO at companies including GoHealth, Crane Worldwide, and Spok — leading compliance programs across HIPAA, HITRUST, SOC 2, ISO 27001, and FedRAMP, and pioneering AI governance frameworks aligned to NIST AI RMF and ISO/IEC 42001. A trusted board and C-suite advisor who translates complex cyber risk into executive strategy and measurable outcomes.',
+  },
+];
+---
+
+<BaseLayout
+  title="About | Cybersynaptics.ai"
+  description="Cybersynaptics is a technical leadership and software consulting firm helping companies move fast with the right engineering and security leadership."
+>
+  <!-- Mission -->
+  <section class="section">
+    <div class="container about-grid">
+      <div class="about-text">
+        <p class="eyebrow">About us</p>
+        <h1>We give companies access to the technical leadership they deserve.</h1>
+        <p>
+          Great technical leadership is often the difference between companies
+          that scale confidently and those that slow down under the weight of
+          bad architecture, security debt, and the wrong hires.
+        </p>
+        <p>
+          Cybersynaptics was built to make that leadership accessible — not
+          just to companies with the budget for a $300k/yr executive suite, but
+          to any company with the ambition to build something great.
+        </p>
+        <p>
+          We started this at an inflection point — when AI is simultaneously
+          the greatest opportunity and the fastest-moving source of new
+          technical debt, security risk, and architectural regret for teams
+          without the right leadership in the room. The companies that navigate
+          this well won't be the ones who moved fastest. They'll be the ones
+          who moved with clarity.
+        </p>
+        <p>
+          We work as true partners: embedded in your organization, accountable
+          to your outcomes, and honest about what's working and what isn't.
+        </p>
+      </div>
+
+      <div class="values">
+        <h2>How we work</h2>
+        <ul class="values-list">
+          <li>
+            <span class="values-icon" aria-hidden="true">◈</span>
+            <div>
+              <strong>Embedded, not advising</strong>
+              <p>We don't send decks from a distance. We're in your systems, your standups, and your hard conversations.</p>
+            </div>
+          </li>
+          <li>
+            <span class="values-icon" aria-hidden="true">◈</span>
+            <div>
+              <strong>Senior-only</strong>
+              <p>Every engagement is staffed with senior practitioners who have done this before at real scale.</p>
+            </div>
+          </li>
+          <li>
+            <span class="values-icon" aria-hidden="true">◈</span>
+            <div>
+              <strong>Honest above all</strong>
+              <p>We'll tell you what you need to hear, not what's comfortable. That's what partners do.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section--sm team-section">
+    <div class="container">
+      <h2>The team</h2>
+      <div class="team-grid">
+        {team.map((member) => (
+          <div class="team-card">
+            <div class="team-card__info">
+              <h3>{member.name}</h3>
+              <p class="team-card__title">{member.title}</p>
+              <p class="team-card__bio">{member.bio}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-block">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Work with us</h2>
+        <p>Ready to add senior technical leadership to your team?</p>
+        <!-- TODO: update CTA to link to /contact once the contact page is built -->
+        <Button href="https://www.linkedin.com/company/cybersynaptics-ai" variant="primary">
+          Get in Touch →
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent-alt);
+    margin-bottom: var(--space-4);
+    max-width: none;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  .about-text h1 {
+    margin-bottom: var(--space-6);
+  }
+
+  .about-text p {
+    margin-bottom: var(--space-4);
+    font-size: 1.0625rem;
+  }
+
+  .values h2 {
+    margin-bottom: var(--space-6);
+  }
+
+  .values-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .values-list li {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: 0;
+  }
+
+  .values-icon {
+    color: var(--color-accent);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .values-list strong {
+    display: block;
+    color: var(--color-text);
+    margin-bottom: var(--space-1);
+  }
+
+  .values-list p {
+    font-size: 0.9375rem;
+    margin: 0;
+  }
+
+  /* Team */
+  .team-section {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .team-section h2 {
+    margin-bottom: var(--space-8);
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .team-card {
+    display: flex;
+    gap: var(--space-5);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    align-items: flex-start;
+  }
+
+  .team-card__title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent-alt);
+    margin-bottom: var(--space-3);
+    max-width: none;
+  }
+
+  .team-card__bio {
+    font-size: 0.9375rem;
+    margin: 0;
+  }
+
+  .team-card h3 {
+    font-size: 1rem;
+    margin-bottom: var(--space-1);
+  }
+
+  /* CTA */
+  .cta-block {
+    background: linear-gradient(135deg, rgba(110, 64, 201, 0.08), rgba(0, 212, 255, 0.04));
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cta-card {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 767px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+</style>

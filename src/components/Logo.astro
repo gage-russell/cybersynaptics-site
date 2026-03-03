@@ -1,0 +1,40 @@
+---
+// Placeholder logo — replace with real brand asset when available.
+// To update the mark: edit public/favicon.svg (updates favicon + logo mark together).
+import LogoMark from './LogoMark.astro';
+---
+
+<a href="/" class="logo" aria-label="Cybersynaptics.ai — home">
+  <LogoMark size={36} class="logo__mark" />
+  <span class="logo__wordmark">cybersynaptics<span class="logo__tld">.ai</span></span>
+</a>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .logo:hover {
+    opacity: 1;
+  }
+
+  .logo__mark {
+    flex-shrink: 0;
+  }
+
+  .logo__wordmark {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    color: var(--color-text);
+  }
+
+  .logo__tld {
+    color: var(--color-accent-alt);
+  }
+</style>

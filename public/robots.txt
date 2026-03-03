@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: update sitemap URL to https://cybersynaptics.ai/sitemap-index.xml when custom domain cybersynaptics.ai is live
+Sitemap: https://cybersynaptics.ai/sitemap-index.xml

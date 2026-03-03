@@ -1,0 +1,137 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title={`${post.data.title} | Cybersynaptics.ai`}
+  description={post.data.description}
+  ogType="article"
+>
+  <article class="section">
+    <div class="container">
+      <a href="/blog" class="back-link">← Back to Blog</a>
+
+      <header class="post-header">
+        <div class="post-meta">
+          <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+          {post.data.author && (
+            <span class="post-meta__sep" aria-hidden="true">·</span>
+            <span>{post.data.author}</span>
+          )}
+        </div>
+        <h1>{post.data.title}</h1>
+        <p class="post-description">{post.data.description}</p>
+
+        {post.data.tags && post.data.tags.length > 0 && (
+          <ul class="tags">
+            {post.data.tags.map((tag) => (
+              <li class="tag">{tag}</li>
+            ))}
+          </ul>
+        )}
+      </header>
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      <footer class="post-footer">
+        <a href="/blog" class="back-link">← Back to Blog</a>
+      </footer>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .back-link {
+    display: inline-block;
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-8);
+    transition: color 0.15s;
+  }
+
+  .back-link:hover {
+    color: var(--color-text);
+    opacity: 1;
+  }
+
+  .post-header {
+    margin-bottom: var(--space-12);
+    max-width: 720px;
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: var(--space-4);
+  }
+
+  .post-meta__sep {
+    opacity: 0.4;
+  }
+
+  .post-header h1 {
+    margin-bottom: var(--space-4);
+  }
+
+  .post-description {
+    font-size: 1.125rem;
+    max-width: 55ch;
+    margin-bottom: var(--space-6);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.2em 0.65em;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-accent-alt);
+    margin-bottom: 0;
+  }
+
+  .prose {
+    max-width: 720px;
+  }
+
+  .post-footer {
+    margin-top: var(--space-16);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--color-border);
+  }
+</style>

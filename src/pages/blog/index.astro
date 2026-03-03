@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/ui/BlogCard.astro';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const posts = allPosts.sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+---
+
+<BaseLayout
+  title="Blog | Cybersynaptics.ai"
+  description="Technical insights on engineering leadership, security, software development, and building great products. From the Cybersynaptics team."
+>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">From the team</p>
+      <h1>Blog</h1>
+      <p class="intro">
+        Thoughts on technical leadership, security, and building great software.
+      </p>
+
+      {posts.length === 0 ? (
+        <p class="empty-state">No posts yet — check back soon.</p>
+      ) : (
+        <div class="posts-grid">
+          {posts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              pubDate={post.data.pubDate}
+              description={post.data.description}
+              slug={post.slug}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent-alt);
+    margin-bottom: var(--space-4);
+    max-width: none;
+  }
+
+  h1 { margin-bottom: var(--space-4); }
+
+  .intro {
+    font-size: 1.0625rem;
+    max-width: 55ch;
+    margin-bottom: var(--space-12);
+  }
+
+  .posts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .empty-state {
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+</style>

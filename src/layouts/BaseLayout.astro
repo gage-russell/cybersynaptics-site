@@ -1,0 +1,77 @@
+---
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  /** Full page title — use format: "Page Name | Cybersynaptics.ai"
+   *  Home page exception: "Cybersynaptics.ai | Virtual CTO, CISO & Software Consulting" */
+  title: string;
+  /** Meta description — keep between 50–160 characters */
+  description: string;
+  /** OG type. Use 'article' for blog posts. */
+  ogType?: 'website' | 'article';
+  /** Optional OG image URL (absolute) */
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  ogType = 'website',
+  ogImage,
+} = Astro.props;
+
+const canonicalURL = Astro.url.href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- TODO: remove noindex after migrating to cybersynaptics.ai custom domain.
+         This prevents the github.io version from being indexed and causing
+         duplicate content issues once the real domain is live. -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Primary meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Canonical URL
+         TODO: ensure Astro.site in astro.config.mjs is set to https://cybersynaptics.ai -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Cybersynaptics.ai" />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Sitemap -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Fonts (system stack — no external request needed) -->
+    <!-- TODO: optionally add a web font import here once brand is finalized -->
+  </head>
+  <body>
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "cybersynaptics-site",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^3.1.9",
+    "@astrojs/sitemap": "3.1.6",
+    "astro": "^4.16.18"
+  }
+}

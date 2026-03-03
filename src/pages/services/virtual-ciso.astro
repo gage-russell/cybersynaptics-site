@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/ui/Button.astro';
+---
+
+<BaseLayout
+  title="Virtual CISO | Cybersynaptics.ai"
+  description="Fractional CISO services for companies navigating SOC 2, ISO 27001, HIPAA, and modern security challenges. Security leadership without the full-time overhead."
+>
+  <!-- Hero -->
+  <section class="service-hero section">
+    <div class="container">
+      <p class="eyebrow">🛡️ Virtual CISO</p>
+      <h1>Security leadership built<br /><span class="gradient-text">for real compliance.</span></h1>
+      <p class="intro">
+        SOC 2, ISO 27001, HIPAA, FedRAMP — and now AI governance. The
+        compliance and threat landscape is more demanding than ever, and the
+        attack surface is expanding as fast as the tooling that creates it.
+        Cybersynaptics embeds a seasoned CISO who has navigated these frameworks
+        before, so you're not learning on the job with your customers' trust at
+        stake.
+      </p>
+      <!-- TODO: update CTA to link to /contact once the contact page is built -->
+      <Button href="https://www.linkedin.com/company/cybersynaptics-ai" variant="primary">
+        Let's Talk →
+      </Button>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section class="section--sm">
+    <div class="container content-grid">
+      <div>
+        <h2>What you get</h2>
+        <ul class="feature-list">
+          <li>Security program design and implementation</li>
+          <li>AI/ML risk assessment and responsible deployment frameworks</li>
+          <li>SOC 2 Type I &amp; II readiness and audit support</li>
+          <li>ISO 27001 / NIST / HIPAA gap assessments</li>
+          <li>Vendor risk management program</li>
+          <li>Security policy and procedure authoring</li>
+          <li>Incident response planning and tabletop exercises</li>
+          <li>Board-level security reporting and risk communication</li>
+          <li>Penetration test oversight and remediation management</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Who it's for</h2>
+        <ul class="feature-list">
+          <li>Series A/B companies under customer compliance pressure</li>
+          <li>Companies deploying AI with data governance or regulatory exposure</li>
+          <li>Healthcare and fintech companies facing HIPAA or PCI requirements</li>
+          <li>SaaS companies needing SOC 2 for enterprise sales</li>
+          <li>Organizations between CISO hires who can't let security slip</li>
+        </ul>
+
+        <h2 style="margin-top: var(--space-8)">How it works</h2>
+        <p>
+          We start with a security posture assessment to understand your current
+          state, obligations, and gaps. From there, we build and execute a
+          prioritized roadmap — whether that's achieving a first certification
+          or maturing an existing program.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-block">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Ready to talk?</h2>
+        <p>Tell us where you are and what compliance obligations you're facing.</p>
+        <!-- TODO: update CTA to link to /contact once the contact page is built -->
+        <Button href="https://www.linkedin.com/company/cybersynaptics-ai" variant="primary">
+          Get in Touch →
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .service-hero { padding-bottom: var(--space-16); }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-accent-alt);
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-4);
+    max-width: none;
+  }
+
+  h1 { margin-bottom: var(--space-6); }
+
+  .intro {
+    font-size: 1.0625rem;
+    max-width: 55ch;
+    margin-bottom: var(--space-8);
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  .feature-list {
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    color: var(--color-text-muted);
+  }
+
+  .feature-list li::marker {
+    color: var(--color-accent-alt);
+  }
+
+  .cta-block {
+    background: linear-gradient(135deg, rgba(110, 64, 201, 0.08), rgba(0, 212, 255, 0.04));
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cta-card {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 767px) {
+    .content-grid { grid-template-columns: 1fr; }
+  }
+</style>
