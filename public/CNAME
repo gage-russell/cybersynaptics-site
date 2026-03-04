@@ -1,6 +1,1 @@
-# TODO: set this to cybersynaptics.ai when DNS is configured at your registrar
-# Steps:
-#   1. Replace this file content with: cybersynaptics.ai
-#   2. Add A records at your registrar pointing to:
-#      185.199.108.153 / 185.199.109.153 / 185.199.110.153 / 185.199.111.153
-#   3. Enable "Enforce HTTPS" in repo Settings → Pages
+cybersynaptics.ai

@@ -2,10 +2,9 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 
-// TODO: update site to 'https://cybersynaptics.ai' and remove base when custom domain is configured
+// TODO: remove noindex meta in BaseLayout.astro after DNS propagates and HTTPS is confirmed
 export default defineConfig({
-  site: 'https://gage-russell.github.io',
-  base: '/cybersynaptics-site',
+  site: 'https://cybersynaptics.ai',
   integrations: [
     sitemap(),
     mdx(),
